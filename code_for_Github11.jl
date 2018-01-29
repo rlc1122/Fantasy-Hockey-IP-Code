@@ -807,9 +807,7 @@ function create_lineups(num_lineups, num_overlap, path_skaters, path_goalies, fo
             break
         end
     end
-
-
-    # Create the output csv file
+ # Create the output csv file
     lineup2 = ""
     for j = 1:size(tracer)[2]
         lineup = ["" "" "" "" "" "" "" "" ""]
@@ -818,25 +816,25 @@ function create_lineups(num_lineups, num_overlap, path_skaters, path_goalies, fo
                 if centers[i]==1
                     if lineup[1]==""
                         lineup[1] = string(skaters[i,1], " ", skaters[i,2])
-                    elseif lineup[2]==""
-                        lineup[2] = string(skaters[i,1], " ", skaters[i,2])
-                    elseif lineup[9] ==""
+                 elseif lineup[9] ==""
                         lineup[9] = string(skaters[i,1], " ", skaters[i,2])
                     end
                 elseif wingers[i] == 1
+                       elseif lineup[2]==""
+                        lineup[2] = string(skaters[i,1], " ", skaters[i,2])
                     if lineup[3] == ""
                         lineup[3] = string(skaters[i,1], " ", skaters[i,2])
                     elseif lineup[4] == ""
                         lineup[4] = string(skaters[i,1], " ", skaters[i,2])
                     elseif lineup[5] == ""
                         lineup[5] = string(skaters[i,1], " ", skaters[i,2])
+                        if lineup[6] == ""
+                        lineup[6] = string(skaters[i,1], " ", skaters[i,2])
                     elseif lineup[9] == ""
                         lineup[9] = string(skaters[i,1], " ", skaters[i,2])
                     end
                 elseif defenders[i]==1
-                    if lineup[6] == ""
-                        lineup[6] = string(skaters[i,1], " ", skaters[i,2])
-                    elseif lineup[7] ==""
+                        elseif lineup[7] ==""
                         lineup[7] = string(skaters[i,1], " ", skaters[i,2])
                     elseif lineup[9] == ""
                         lineup[9] = string(skaters[i,1], " ", skaters[i,2])
@@ -844,6 +842,8 @@ function create_lineups(num_lineups, num_overlap, path_skaters, path_goalies, fo
                 end
             end
         end
+
+  
         for i =1:num_goalies
             if tracer[num_skaters+i,j] == 1
                 lineup[8] = string(goalies[i,1], " ", goalies[i,2])
